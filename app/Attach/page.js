@@ -22,7 +22,7 @@ const Form = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://3.110.186.6:4000/cars");
+        const response = await fetch("http://3.110.186.6:4000/cars");
         const data = await response.json();
 
         setData(data);
@@ -50,7 +50,7 @@ const Form = () => {
     formDataToSend.append("AdhaarBack", formdata.AdhaarBack);
 
     try {
-      const response = await fetch("https://3.110.186.6:4000/cars", {
+      const response = await fetch("http://3.110.186.6:4000/cars", {
         method: "POST",
         body: formDataToSend,
       });
