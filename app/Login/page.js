@@ -18,7 +18,7 @@ const Page = () => {
     return (
         <div>
             <div className='text-white flex justify-center p-10 text-2xl font-bold underline underline-offset-4'>Welcome to G7Cars</div>
-            <div className='mx-80 my-20 py-14  space-y-16 border-[4px] border-rose-900 bg-white rounded-xl shadow-xl  '>
+            <div className='lg:mx-80 md:mx-40 mx-10 my-20 py-14  space-y-16 border-[4px] border-rose-900 bg-white rounded-xl shadow-xl  '>
                 <div className='flex justify-center text-2xl font-bold underline underline-offset-8 decoration-rose-950 decoration-4'>Login</div>
                 <div>
                     <form className='flex flex-col justify-center items-center space-y-4'>
