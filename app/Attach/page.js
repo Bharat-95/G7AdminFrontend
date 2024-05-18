@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Form = () => {
   const [formdata, setFormData] = useState({
-    image: null,
+    Coverimage: null,
     Name: "",
     Price: "",
     Gear: "",
@@ -16,13 +16,16 @@ const Form = () => {
     AdhaarFront: null,
     AdhaarBack: null,
     Make: "",
+    Insurance: "",
+    Pollution:"",
+    Images:"",
   });
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://3.110.186.6:4000/cars");
+        const response = await fetch("https://r3ozb5mg9b.execute-api.us-east-1.amazonaws.com/cars");
         const data = await response.json();
 
         setData(data);
@@ -39,7 +42,7 @@ const Form = () => {
     const formDataToSend = new FormData();
     formDataToSend.append("Name", formdata.Name);
     formDataToSend.append("Price", formdata.Price);
-    formDataToSend.append("image", formdata.image);
+    formDataToSend.append("Coverimage", formdata.Coverimage);
     formDataToSend.append("Gear", formdata.Gear);
     formDataToSend.append("Fuel", formdata.Fuel);
     formDataToSend.append("Make", formdata.Make);
@@ -48,9 +51,12 @@ const Form = () => {
     formDataToSend.append("RcBack", formdata.RcBack);
     formDataToSend.append("AdhaarFront", formdata.AdhaarFront);
     formDataToSend.append("AdhaarBack", formdata.AdhaarBack);
+    formDataToSend.append("Insurance", formdata.Insurance);
+    formDataToSend.append("Pollution", formdata.Pollution);
+    formDataToSend.append("Images", formdata.Images)
 
     try {
-      const response = await fetch("http://3.110.186.6:4000/cars", {
+      const response = await fetch("https://r3ozb5mg9b.execute-api.us-east-1.amazonaws.com/cars", {
         method: "POST",
         body: formDataToSend,
       });
@@ -60,7 +66,20 @@ const Form = () => {
       console.error("Not able to add data", error);
     }
 
-    setFormData({ Name: "", Price: "", image: "" });
+    setFormData({ 
+      Coverimage: null,
+      Name: "",
+      Price: "",
+      Gear: "",
+      Fuel: "",
+      Seating: "",
+      RcFront: null,
+      RcBack: null,
+      AdhaarFront: null,
+      AdhaarBack: null,
+      Make: "",
+      Insurance: '',
+      Pollution:'',});
   };
 
 
@@ -79,13 +98,13 @@ const Form = () => {
             onSubmit={handleSubmit}
           >
             <div className="">
-              Car Image:
+              Cover Image:
               <input
                 type="file"
                 onChange={(e) =>
-                  setFormData({ ...formdata, image: e.target.files[0] })
+                  setFormData({ ...formdata, Coverimage: e.target.files[0] })
                 }
-                name="image"
+                name="Coverimage"
                 required
                 className="lg:mx-2"
               />
@@ -245,6 +264,54 @@ const Form = () => {
 
               />
             </div>
+
+            <div className="">
+              Insurance:
+              <input
+                type="file"
+                onChange={(e) =>
+                  setFormData({ ...formdata, Insurance: e.target.files[0] })
+                }
+                name="Insurance"
+                required
+                className="mx-2"
+
+              />
+            </div>
+
+            <div className="">
+              Pollution:
+              <input
+                type="file"
+                onChange={(e) =>
+                  setFormData({ ...formdata, Insurance: e.target.files[0] })
+                }
+                name="Pollution"
+                required
+                className="mx-2"
+
+              />
+            </div>
+
+            <div className="">
+              Car Images:
+              <input
+                type="file"
+                onChange={(e) =>
+                  setFormData({ ...formdata, Insurance: e.target.files[0] })
+                }
+                name="Images"
+                required
+                multiple
+                className="mx-2"
+
+              />
+            </div>
+
+
+
+
+            
 
             <div className="">
               <button
