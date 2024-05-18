@@ -287,7 +287,6 @@ const Form = () => {
                   setFormData({ ...formdata, Insurance: e.target.files[0] })
                 }
                 name="Pollution"
-                required
                 className="mx-2"
 
               />
@@ -298,7 +297,7 @@ const Form = () => {
               <input
                 type="file"
                 onChange={(e) =>
-                  setFormData({ ...formdata, Insurance: e.target.files[0] })
+                  setFormData({ ...formdata, Images: e.target.files[0] })
                 }
                 name="Images"
                 required
