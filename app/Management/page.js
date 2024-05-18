@@ -99,7 +99,7 @@ const page = () => {
                   </div>
                   <div className="flex gap-10 items-center">
                     <SlCalender size={30} />
-                    {car.Make}
+                    {car.Year}
                   </div>
                 </div>
                 <div className="space-y-4">

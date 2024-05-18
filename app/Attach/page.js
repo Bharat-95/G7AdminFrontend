@@ -10,6 +10,7 @@ const Form = () => {
     OwnerAddress:"",
     MobileNumber:"",
     EmailAddress:"",
+    Year:"",
     Color:"",
     Reading:"",
     AgreementPeriod:"",
@@ -93,6 +94,7 @@ const Form = () => {
     formDataToSend.append("NameonBank", formdata.NameonBank);
     formDataToSend.append("IFSC", formdata.IFSC);
     formDataToSend.append("AgreementDoc", formdata.AgreementDoc);
+    formDataToSend.append("Year", formdata.Year)
 
     try {
       const response = await fetch("https://r3ozb5mg9b.execute-api.us-east-1.amazonaws.com/cars", {
@@ -140,6 +142,7 @@ const Form = () => {
       Images:"",
       AccountNo:"",
       AgreementDoc:"",
+      Year:"",
     });
   };
 
@@ -261,6 +264,20 @@ const Form = () => {
                   setFormData({ ...formdata, Reading: e.target.value })
                 }
                 name="Reading"
+                className={inputStyle}
+                required
+              />
+            </div>
+
+            <div className="flex flex-col items-start">
+              <label>Car Year:</label>
+              <input
+                type="number"
+                value={formdata.Year}
+                onChange={(e) =>
+                  setFormData({ ...formdata, Year: e.target.value })
+                }
+                name="Year"
                 className={inputStyle}
                 required
               />
