@@ -77,7 +77,7 @@ const page = () => {
               <div className="flex justify-between lg:mx-24 md:mx-24 items-center">
                 <div className="flex items-center justify-center">
                   <Image
-                    src={`data:image/jpeg;base64,${car.image}`}
+                    src={`data:image/jpeg;base64,${car.Coverimage}`}
                     width={0}
                     height={0}
                     alt="No Image Found"
