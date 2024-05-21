@@ -47,7 +47,10 @@ const page = () => {
 
   const formatYearAsDate = (year) => {
     const date = new Date(year, 0, 1); // January 1st of the given year
-    return date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' });
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based, so add 1
+    const day = date.getDate().toString().padStart(2, '0'); // Get day and pad with zero if needed
+    const formattedDate = `${month}/${day}/${date.getFullYear()}`; // Format MM/DD/YYYY
+    return formattedDate;
   };
 
   return (
