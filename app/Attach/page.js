@@ -456,7 +456,6 @@ const Form = () => {
               }
               name="AltNumber"
               className={inputStyle}
-              required
             />
           </div>
 

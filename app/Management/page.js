@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Header from "../Header";
 import { useState, useEffect } from "react";
@@ -45,12 +45,17 @@ const page = () => {
     }
   };
 
+  const formatYearAsDate = (year) => {
+    const date = new Date(year, 0, 1); // January 1st of the given year
+    return date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' });
+  };
+
   return (
     <div className="flex">
       <Header />
 
       <div className="w-[100%] lg:m-40  bg-white border-[2px] p-4 border-rose-900 rounded-xl">
-        <div className="text-rose-900  font-extrabold underline underline-offset-4 flex justify-center">
+        <div className="text-rose-900 font-extrabold underline underline-offset-4 flex justify-center">
           VEHICLE MANAGEMENT
         </div>
         <Link
@@ -59,14 +64,14 @@ const page = () => {
         >
           Attach a car
         </Link>
-        <div className="min-h-[80%] lg:m-20 md:m-20 lg:ml-0 md:ml-0  ml-14 space-y-10 lg:p-20 md:p-20 p-4">
+        <div className="min-h-[80%] lg:m-20 md:m-20 lg:ml-0 md:ml-0 ml-14 space-y-10 lg:p-20 md:p-20 p-4">
           {loading ? (
             <div className="flex justify-center">Loading...</div>
           ) : (
             data.map((car) => (
               <div
                 key={car._id}
-                className=" h-80 rounded-xl shadow-lg bg-white text-rose-900"
+                className="h-80 rounded-xl shadow-lg bg-white text-rose-900"
               >
                 <div className="border p-4 rounded-xl text-xl font-bold">
                   {car.Name}
@@ -96,7 +101,7 @@ const page = () => {
                     </div>
                     <div className="flex gap-10 items-center">
                       <SlCalender size={30} />
-                      {car.Year}
+                      {formatYearAsDate(car.Year)}
                     </div>
                   </div>
                   <div className="space-y-4">
