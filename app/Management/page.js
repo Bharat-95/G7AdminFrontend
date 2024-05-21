@@ -37,8 +37,9 @@ const page = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`https://7u8pgn4fie.execute-api.us-east-1.amazonaws.com/cars/${id}`);
-      console.log("Car deleted successfully");
+      await axios.delete(`https://7u8pgn4fie.execute-api.us-east-1.amazonaws.com/cars/${id}`);
+      alert("Car deleted successfully");
+      fetchData();
     } catch (error) {
       console.error("Error deleting car:", error);
     }
