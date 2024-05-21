@@ -46,7 +46,8 @@ const page = () => {
   };
 
   const formatYearAsDate = (year) => {
-    if (!/^\d{4}$/.test(year)) {
+    const currentYear = new Date().getFullYear();
+    if (!/^\d{4}$/.test(year) || year < 1886 || year > currentYear) {
       return "Invalid Year";
     }
     const date = new Date(year, 0, 1); // January 1st of the given year
