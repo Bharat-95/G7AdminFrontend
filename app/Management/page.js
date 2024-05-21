@@ -11,6 +11,7 @@ import { SlCalender } from "react-icons/sl";
 import Image from "next/image";
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
+import axios from "axios";
 
 const page = () => {
   const [data, setData] = useState([]);
@@ -22,12 +23,8 @@ const page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://r3ozb5mg9b.execute-api.us-east-1.amazonaws.com/cars");
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await response.json();
-        setData(data);
+        const response = await axios.get("https://7u8pgn4fie.execute-api.us-east-1.amazonaws.com/cars");
+        setData(response.data);
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -40,14 +37,10 @@ const page = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`https://r3ozb5mg9b.execute-api.us-east-1.amazonaws.com/cars/${id}`, {
-        method: "DELETE",
-      });
-
-      alert("Car deleted successfully");
-      window.location.reload();
+      const response = await axios.delete(`https://7u8pgn4fie.execute-api.us-east-1.amazonaws.com/cars/${id}`);
+      console.log("Car deleted successfully");
     } catch (error) {
-      console.error("Error deleting item:", error);
+      console.error("Error deleting car:", error);
     }
   };
 
