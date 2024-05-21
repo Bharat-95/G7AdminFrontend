@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React from "react";
 import Header from "../Header";
 import { useState, useEffect } from "react";
@@ -60,53 +60,57 @@ const page = () => {
           Attach a car
         </Link>
         <div className="min-h-[80%] lg:m-20 md:m-20 lg:ml-0 md:ml-0  ml-14 space-y-10 lg:p-20 md:p-20 p-4">
-          {data.map((car) => (
-            <div
-              key={car._id}
-              className=" h-80 rounded-xl shadow-lg bg-white text-rose-900"
-            >
-              <div className="border p-4 rounded-xl text-xl font-bold">
-                {car.Name}
+          {loading ? (
+            <div className="flex justify-center">Loading...</div>
+          ) : (
+            data.map((car) => (
+              <div
+                key={car._id}
+                className=" h-80 rounded-xl shadow-lg bg-white text-rose-900"
+              >
+                <div className="border p-4 rounded-xl text-xl font-bold">
+                  {car.Name}
+                </div>
+                <div className="flex justify-between lg:mx-24 md:mx-24 items-center">
+                  <div className="flex items-center justify-center">
+                    <Image
+                      src={`data:image/jpeg;base64,${car.Coverimage}`}
+                      width={0}
+                      height={0}
+                      alt="No Image Found"
+                      className="lg:w-64 lg:h-40 md:w-64 md:h-40 w-20 h-20 m-4"
+                    />
+                  </div>
+                  <div className="p-6 space-y-6">
+                    <div className="flex gap-10 items-center">
+                      <TbManualGearboxFilled size={30} />
+                      {car.Gear}
+                    </div>
+                    <div className="flex gap-10 items-center">
+                      <BsFillFuelPumpFill size={30} />
+                      {car.Fuel}
+                    </div>
+                    <div className="flex gap-10 items-center">
+                      <MdOutlineAirlineSeatReclineNormal size={30} />
+                      {car.Seating}
+                    </div>
+                    <div className="flex gap-10 items-center">
+                      <SlCalender size={30} />
+                      {car.Year}
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <MdDelete
+                      onClick={() => handleDelete(car._id)}
+                      size={40}
+                      className="text-rose-900 cursor-pointer"
+                    />
+                    <MdEdit size={40} className="text-rose-900 cursor-pointer" />
+                  </div>
+                </div>
               </div>
-              <div className="flex justify-between lg:mx-24 md:mx-24 items-center">
-                <div className="flex items-center justify-center">
-                  <Image
-                    src={`data:image/jpeg;base64,${car.Coverimage}`}
-                    width={0}
-                    height={0}
-                    alt="No Image Found"
-                    className="lg:w-64 lg:h-40 md:w-64 md:h-40 w-20 h-20 m-4"
-                  />
-                </div>
-                <div className="p-6 space-y-6">
-                  <div className="flex gap-10 items-center">
-                    <TbManualGearboxFilled size={30} />
-                    {car.Gear}
-                  </div>
-                  <div className="flex gap-10 items-center">
-                    <BsFillFuelPumpFill size={30} />
-                    {car.Fuel}
-                  </div>
-                  <div className="flex gap-10 items-center">
-                    <MdOutlineAirlineSeatReclineNormal size={30} />
-                    {car.Seating}
-                  </div>
-                  <div className="flex gap-10 items-center">
-                    <SlCalender size={30} />
-                    {car.Year}
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <MdDelete
-                    onClick={() => handleDelete(car._id)}
-                    size={40}
-                    className="text-rose-900 cursor-pointer"
-                  />
-                  <MdEdit size={40} className="text-rose-900 cursor-pointer" />
-                </div>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
         <div></div>
