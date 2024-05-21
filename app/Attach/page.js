@@ -37,6 +37,7 @@ const Form = () => {
     Images: null, 
     Insurance: null, 
     Comment: "",
+    AltNumber:"",
   });
 
   const [data, setData] = useState([]);
@@ -114,6 +115,7 @@ const Form = () => {
       Images: null,
       InsuranceDoc: null,
       Comment: "",
+      AltNumber:"",
     });
   };
 
@@ -444,6 +446,21 @@ const Form = () => {
           </div>
 
           <div className="flex flex-col items-start">
+            <label htmlFor="altnumber">Alternate Number:</label>
+            <input
+              id="altnumber"
+              type="number"
+              value={formdata.AltNumber}
+              onChange={(e) =>
+                setFormData({ ...formdata, AltNumber: e.target.value })
+              }
+              name="AltNumber"
+              className={inputStyle}
+              required
+            />
+          </div>
+
+          <div className="flex flex-col items-start">
             <label htmlFor="emailaddress">Email Address:</label>
             <input
               id="emailaddress"
@@ -606,7 +623,7 @@ const Form = () => {
 
           <div className="flex flex-col items-start">
             <label htmlFor="comment">Comment:</label>
-            <input
+            <textarea
               id="comment"
               type="text"
               value={formdata.Comment}
