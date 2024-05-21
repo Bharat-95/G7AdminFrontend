@@ -39,7 +39,7 @@ const page = () => {
     try {
       await axios.delete(`https://7u8pgn4fie.execute-api.us-east-1.amazonaws.com/cars/${id}`);
       alert("Car deleted successfully");
-      fetchData();
+      window.location.reload();
     } catch (error) {
       console.error("Error deleting car:", error);
     }
