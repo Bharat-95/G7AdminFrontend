@@ -571,7 +571,6 @@ const Form = () => {
                 setFormData({ ...formdata, Pollution: e.target.files[0] })
               }
               name="Pollution"
-              required
               className="lg:mx-2"
             />
           </div>
