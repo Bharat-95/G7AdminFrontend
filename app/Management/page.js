@@ -46,6 +46,9 @@ const page = () => {
   };
 
   const formatYearAsDate = (year) => {
+    if (!/^\d{4}$/.test(year)) {
+      return "Invalid Year";
+    }
     const date = new Date(year, 0, 1); // January 1st of the given year
     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based, so add 1
     const day = date.getDate().toString().padStart(2, '0'); // Get day and pad with zero if needed
@@ -57,7 +60,7 @@ const page = () => {
     <div className="flex">
       <Header />
 
-      <div className="w-[100%] lg:m-40  bg-white border-[2px] p-4 border-rose-900 rounded-xl">
+      <div className="w-[100%] lg:m-40 bg-white border-[2px] p-4 border-rose-900 rounded-xl">
         <div className="text-rose-900 font-extrabold underline underline-offset-4 flex justify-center">
           VEHICLE MANAGEMENT
         </div>
