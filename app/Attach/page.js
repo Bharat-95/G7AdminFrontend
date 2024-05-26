@@ -33,61 +33,63 @@ const Form = () => {
     NameonBank: "",
     IFSC: "",
     AgreementDoc: null,
-    Pollution: null,
-    Images: null,
-    InsuranceDoc: null,
+    Pollution: "",
+    Images: null, 
+    Insurance: null, 
     Comment: "",
-    AltNumber: "",
+    AltNumber:"",
   });
 
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+     
+const [data, setData] = useState([]);
+const [loading, setLoading] = useState(false);
+const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars"
-        );
-        if (response.status !== 200) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        setData(response.data);
-      } catch (error) {
-        console.error("Unable to fetch data from MongoDB", error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const formDataToSend = new FormData();
-    Object.keys(formdata).forEach((key) => {
-      formDataToSend.append(key, formdata[key]);
-    });
-
+useEffect(() => {
+  const fetchData = async () => {
     try {
-      const response = await axios.post(
-        "https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars",
-        formDataToSend
+      const response = await axios.get(
+        "https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars"
       );
       if (response.status !== 200) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      setLoading(false);
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-        window.location.reload();
-      }, 2000);
+      setData(response.data);
     } catch (error) {
-      setLoading(false);
-      console.error("Not able to add data", error);
+      console.error("Unable to fetch data from MongoDB", error);
     }
+  };
+  fetchData();
+}, []);
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+
+  const formDataToSend = new FormData();
+  Object.keys(formdata).forEach((key) => {
+    formDataToSend.append(key, formdata[key]);
+  });
+
+  try {
+    const response = await axios.post(
+      "https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars",
+      formDataToSend
+    );
+    if (response.status !== 200) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    setLoading(false);
+    setSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+      alert('Data uploaded successfully')
+      window.location.reload();
+    }, 2000);
+  } catch (error) {
+    setLoading(false);
+    console.error("Not able to add data", error);
+  }
 
     setFormData({
       Coverimage: null,
@@ -117,12 +119,12 @@ const Form = () => {
       BankName: "",
       NameonBank: "",
       IFSC: "",
-      AgreementDoc: null,
-      Pollution: null,
+      Agreement: "",
+      Pollution: "",
       Images: null,
       InsuranceDoc: null,
       Comment: "",
-      AltNumber: "",
+      AltNumber:"",
     });
   };
 
@@ -149,9 +151,6 @@ const Form = () => {
         <div className="text-2xl text-center">
           Please Enter Details Of Your Car
         </div>
-
-        {loading && <div className="text-center text-red-500">Uploading data, please wait...</div>}
-        {success && <div className="text-center text-green-500">Data added successfully!</div>}
 
         <form className="space-y-6 my-10" onSubmit={handleSubmit}>
           <div className="flex flex-col items-start">
@@ -287,57 +286,55 @@ const Form = () => {
           </div>
 
           <div className="flex flex-col items-start">
-            <label htmlFor="gear">Gear Type:</label>
-            <select
-              id="gear"
-              value={formdata.Gear}
-              onChange={(e) =>
-                setFormData({ ...formdata, Gear: e.target.value })
-              }
-              name="Gear"
-              className={inputStyle}
-              required
-            >
-              <option value=""></option>
-              <option value="Manual">Manual</option>
-              <option value="Automatic">Automatic</option>
-            </select>
-          </div>
+              <label htmlFor="gear">Gear Type:</label>
+              <select
+                type="text"
+                value={formdata.Gear}
+                id="gear"
+                onChange={(e) =>
+                  setFormData({ ...formdata, Gear: e.target.value })
+                }
+                name="Gear"
+                className={inputStyle}
+                required
+              ><option></option>
+              <option>Manual</option>
+              <option>Automatic</option></select>
+            </div>
 
-          <div className="flex flex-col items-start">
-            <label htmlFor="fuel">Fuel Type:</label>
-            <select
-              id="fuel"
-              value={formdata.Fuel}
-              onChange={(e) =>
-                setFormData({ ...formdata, Fuel: e.target.value })
-              }
-              name="Fuel"
-              className={inputStyle}
-              required
-            >
-              <option value=""></option>
-              <option value="Petrol">Petrol</option>
-              <option value="Diesel">Diesel</option>
-              <option value="Electric">Electric</option>
-              <option value="Hybrid">Hybrid</option>
-            </select>
-          </div>
+            <div className="flex flex-col items-start">
+              <label htmlFor="fuel">Fuel Type:</label>
+              <select
+                type="text"
+                value={formdata.Fuel}
+                id="fuel"
+                onChange={(e) =>
+                  setFormData({ ...formdata, Fuel: e.target.value })
+                }
+                name="Fuel"
+                className={inputStyle}
+                required
+              ><option></option>
+              <option>Diesel</option>
+              <option>Petrol</option></select>
+            </div>
 
-          <div className="flex flex-col items-start">
-            <label htmlFor="seating">Seating Capacity:</label>
-            <input
-              id="seating"
-              type="number"
-              value={formdata.Seating}
-              onChange={(e) =>
-                setFormData({ ...formdata, Seating: e.target.value })
-              }
-              name="Seating"
-              className={inputStyle}
-              required
-            />
-          </div>
+            <div className="flex flex-col items-start">
+              <label htmlFor="seating">Seating Capacity:</label>
+              <select
+                type="text"
+                value={formdata.Seating}
+                id="seating"
+                onChange={(e) =>
+                  setFormData({ ...formdata, Seating: e.target.value })
+                }
+                name="Seating"
+                className={inputStyle}
+                required
+              ><option></option>
+              <option>5 Seater</option>
+              <option>7 Seater</option></select>
+            </div>
 
           <div className="flex flex-col items-start">
             <label htmlFor="rcfront">RC Front:</label>
@@ -362,34 +359,6 @@ const Form = () => {
                 setFormData({ ...formdata, RcBack: e.target.files[0] })
               }
               name="RcBack"
-              required
-              className="lg:mx-2"
-            />
-          </div>
-
-          <div className="flex flex-col items-start">
-            <label htmlFor="adhaarfront">Adhaar Front:</label>
-            <input
-              id="adhaarfront"
-              type="file"
-              onChange={(e) =>
-                setFormData({ ...formdata, AdhaarFront: e.target.files[0] })
-              }
-              name="AdhaarFront"
-              required
-              className="lg:mx-2"
-            />
-          </div>
-
-          <div className="flex flex-col items-start">
-            <label htmlFor="adhaarback">Adhaar Back:</label>
-            <input
-              id="adhaarback"
-              type="file"
-              onChange={(e) =>
-                setFormData({ ...formdata, AdhaarBack: e.target.files[0] })
-              }
-              name="AdhaarBack"
               required
               className="lg:mx-2"
             />
@@ -426,7 +395,7 @@ const Form = () => {
           </div>
 
           <div className="flex flex-col items-start">
-            <label htmlFor="expirydate">Insurance Expiry Date:</label>
+            <label htmlFor="expirydate">Expiry Date:</label>
             <input
               id="expirydate"
               type="date"
@@ -441,10 +410,114 @@ const Form = () => {
           </div>
 
           <div className="flex flex-col items-start">
+            <label htmlFor="ownername">Owner Name:</label>
+            <input
+              id="ownername"
+              type="text"
+              value={formdata.OwnerName}
+              onChange={(e) =>
+                setFormData({ ...formdata, OwnerName: e.target.value })
+              }
+              name="OwnerName"
+              className={inputStyle}
+              required
+            />
+          </div>
+
+          <div className="flex flex-col items-start">
+            <label htmlFor="owneraddress">Owner Address:</label>
+            <input
+              id="owneraddress"
+              type="text"
+              value={formdata.OwnerAddress}
+              onChange={(e) =>
+                setFormData({ ...formdata, OwnerAddress: e.target.value })
+              }
+              name="OwnerAddress"
+              className={inputStyle}
+              required
+            />
+          </div>
+
+          <div className="flex flex-col items-start">
+            <label htmlFor="mobilenumber">Phone Number:</label>
+            <input
+              id="mobilenumber"
+              type="number"
+              value={formdata.MobileNumber}
+              onChange={(e) =>
+                setFormData({ ...formdata, MobileNumber: e.target.value })
+              }
+              name="MobileNumber"
+              className={inputStyle}
+              required
+            />
+          </div>
+
+          <div className="flex flex-col items-start">
+            <label htmlFor="altnumber">Alternate Number:</label>
+            <input
+              id="altnumber"
+              type="number"
+              value={formdata.AltNumber}
+              onChange={(e) =>
+                setFormData({ ...formdata, AltNumber: e.target.value })
+              }
+              name="AltNumber"
+              className={inputStyle}
+            />
+          </div>
+
+          <div className="flex flex-col items-start">
+            <label htmlFor="emailaddress">Email Address:</label>
+            <input
+              id="emailaddress"
+              type="email"
+              value={formdata.EmailAddress}
+              onChange={(e) =>
+                setFormData({ ...formdata, EmailAddress: e.target.value })
+              }
+              name="EmailAddress"
+              className={inputStyle}
+              required
+            />
+          </div>
+
+          <div className="flex flex-col items-start">
+            <label htmlFor="adhaarfront">Adhaar Front:</label>
+            <input
+              id="adhaarfront"
+              type="file"
+              onChange={(e) =>
+                setFormData({ ...formdata, AdhaarFront: e.target.files[0] })
+              }
+              name="AdhaarFront"
+              required
+              className="lg:mx-2"
+            />
+          </div>
+
+          <div className="flex flex-col items-start">
+            <label htmlFor="adhaarback">Adhaar Back:</label>
+            <input
+              id="adhaarback"
+              type="file"
+              onChange={(e) =>
+                setFormData({ ...formdata, AdhaarBack: e.target.files[0] })
+              }
+              name="AdhaarBack"
+              required
+              className="lg:mx-2"
+            />
+          </div>
+
+          
+
+          <div className="flex flex-col items-start">
             <label htmlFor="bankaccountno">Bank Account Number:</label>
             <input
               id="bankaccountno"
-              type="text"
+              type="number"
               value={formdata.BankAccountNo}
               onChange={(e) =>
                 setFormData({ ...formdata, BankAccountNo: e.target.value })
@@ -486,7 +559,7 @@ const Form = () => {
           </div>
 
           <div className="flex flex-col items-start">
-            <label htmlFor="ifsc">IFSC Code:</label>
+            <label htmlFor="ifsc">IFSC:</label>
             <input
               id="ifsc"
               type="text"
@@ -501,9 +574,9 @@ const Form = () => {
           </div>
 
           <div className="flex flex-col items-start">
-            <label htmlFor="agreementdoc">Agreement Document:</label>
+            <label htmlFor="AgreementDoc">Agreement:</label>
             <input
-              id="agreementdoc"
+              id="AgreementDoc"
               type="file"
               onChange={(e) =>
                 setFormData({ ...formdata, AgreementDoc: e.target.files[0] })
@@ -515,7 +588,7 @@ const Form = () => {
           </div>
 
           <div className="flex flex-col items-start">
-            <label htmlFor="pollution">Pollution Certificate:</label>
+            <label htmlFor="pollution">Pollution:</label>
             <input
               id="pollution"
               type="file"
@@ -523,7 +596,6 @@ const Form = () => {
                 setFormData({ ...formdata, Pollution: e.target.files[0] })
               }
               name="Pollution"
-              required
               className="lg:mx-2"
             />
           </div>
@@ -533,23 +605,23 @@ const Form = () => {
             <input
               id="images"
               type="file"
-              multiple
               onChange={(e) =>
-                setFormData({ ...formdata, Images: e.target.files })
+                setFormData({ ...formdata, Images: e.target.files[0] })
               }
               name="Images"
               required
+              multiple
               className="lg:mx-2"
             />
           </div>
 
           <div className="flex flex-col items-start">
-            <label htmlFor="insurancedoc">Insurance Document:</label>
+            <label htmlFor="insurancedoc">Insurance Doc:</label>
             <input
               id="insurancedoc"
               type="file"
               onChange={(e) =>
-                setFormData({ ...formdata, InsuranceDoc: e.target.files[0] })
+                setFormData({ ...formdata, Insurance: e.target.files[0] })
               }
               name="InsuranceDoc"
               required
@@ -558,28 +630,15 @@ const Form = () => {
           </div>
 
           <div className="flex flex-col items-start">
-            <label htmlFor="comment">Additional Comments:</label>
+            <label htmlFor="comment">Comment:</label>
             <textarea
               id="comment"
+              type="text"
               value={formdata.Comment}
               onChange={(e) =>
                 setFormData({ ...formdata, Comment: e.target.value })
               }
               name="Comment"
-              className="w-96 h-32 text-black p-2 mx-2 rounded-md"
-            />
-          </div>
-
-          <div className="flex flex-col items-start">
-            <label htmlFor="altnumber">Alternate Mobile Number:</label>
-            <input
-              id="altnumber"
-              type="text"
-              value={formdata.AltNumber}
-              onChange={(e) =>
-                setFormData({ ...formdata, AltNumber: e.target.value })
-              }
-              name="AltNumber"
               className={inputStyle}
             />
           </div>
@@ -593,6 +652,7 @@ const Form = () => {
               {loading ? "Uploading..." : "Submit"}
             </button>
           </div>
+
         </form>
       </div>
     </div>
