@@ -46,7 +46,7 @@ const Form = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://7u8pgn4fie.execute-api.us-east-1.amazonaws.com/cars"
+          "https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars"
         );
         if (response.status !== 200) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -70,7 +70,7 @@ const Form = () => {
 
     try {
       const response = await axios.post(
-        "https://7u8pgn4fie.execute-api.us-east-1.amazonaws.com/cars",
+        "https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars",
         formDataToSend
       );
       if (response.status !== 200) {

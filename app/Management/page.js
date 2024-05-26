@@ -23,7 +23,7 @@ const page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://7u8pgn4fie.execute-api.us-east-1.amazonaws.com/cars");
+        const response = await axios.get("https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars");
         setData(response.data);
         setLoading(false);
       } catch (error) {
@@ -37,7 +37,7 @@ const page = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://7u8pgn4fie.execute-api.us-east-1.amazonaws.com/cars/${id}`);
+      await axios.delete(`https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars/${id}`);
       alert("Car deleted successfully");
       window.location.reload();
     } catch (error) {
@@ -50,10 +50,10 @@ const page = () => {
     if (!/^\d{4}$/.test(year) || year < 1886 || year > currentYear) {
       return "Invalid Year";
     }
-    const date = new Date(year, 0, 1); // January 1st of the given year
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based, so add 1
-    const day = date.getDate().toString().padStart(2, '0'); // Get day and pad with zero if needed
-    const formattedDate = `${month}/${day}/${date.getFullYear()}`; // Format MM/DD/YYYY
+    const date = new Date(year, 0, 1); 
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0'); 
+    const formattedDate = `${month}/${day}/${date.getFullYear()}`;
     return formattedDate;
   };
 
