@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header";
-import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { TbManualGearboxFilled } from "react-icons/tb";
@@ -9,8 +8,7 @@ import { BsFillFuelPumpFill } from "react-icons/bs";
 import { MdOutlineAirlineSeatReclineNormal } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
 import Image from "next/image";
-import { MdDelete } from "react-icons/md";
-import { MdEdit } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 import axios from "axios";
 
 const page = () => {
@@ -36,12 +34,17 @@ const page = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    try {
-      await axios.delete(`https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars/${id}`);
-      alert("Car deleted successfully");
-      window.location.reload();
-    } catch (error) {
-      console.error("Error deleting car:", error);
+    const confirmed = window.confirm("Are you sure you want to delete this car?");
+    if (confirmed) {
+      try {
+        await axios.delete(`https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars/${id}`);
+        alert("Car deleted successfully");
+        // Reload the data to reflect the changes
+        const response = await axios.get("https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars");
+        setData(response.data);
+      } catch (error) {
+        console.error("Error deleting car:", error);
+      }
     }
   };
 
@@ -50,9 +53,9 @@ const page = () => {
     if (!/^\d{4}$/.test(year) || year < 1886 || year > currentYear) {
       return "Invalid Year";
     }
-    const date = new Date(year, 0, 1); 
+    const date = new Date(year, 0, 1);
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0'); 
+    const day = date.getDate().toString().padStart(2, '0');
     const formattedDate = `${month}/${day}/${date.getFullYear()}`;
     return formattedDate;
   };
@@ -124,8 +127,6 @@ const page = () => {
             ))
           )}
         </div>
-
-        <div></div>
       </div>
     </div>
   );
