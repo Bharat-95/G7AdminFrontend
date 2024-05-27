@@ -21,7 +21,7 @@ const page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars");
+        const response = await axios.get("https://g7backend-git-main-bharat-95s-projects.vercel.app/cars");
         setData(response.data);
         setLoading(false);
       } catch (error) {
@@ -37,9 +37,9 @@ const page = () => {
     const confirmed = window.confirm("Are you sure you want to delete this car?");
     if (confirmed) {
       try {
-        await axios.delete(`https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars/${id}`);
+        await axios.delete(`https://g7backend-git-main-bharat-95s-projects.vercel.app/cars/${id}`);
         alert("Car deleted successfully");
-        const response = await axios.get("https://o57antkh6e.execute-api.us-east-1.amazonaws.com/cars");
+        const response = await axios.get("https://g7backend-git-main-bharat-95s-projects.vercel.app/cars");
         setData(response.data);
       } catch (error) {
         console.error("Error deleting car:", error);
