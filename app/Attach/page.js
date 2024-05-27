@@ -49,7 +49,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://g7backend-git-main-bharat-95s-projects.vercel.app/cars"
+        "https://g7backend.vercel.app/cars"
       );
       if (response.status !== 200) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -73,7 +73,7 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await axios.post(
-      "https://g7backend-git-main-bharat-95s-projects.vercel.app/cars",
+      "https://g7backend.vercel.app/cars",
       formDataToSend
     );
     if (response.status !== 200) {
