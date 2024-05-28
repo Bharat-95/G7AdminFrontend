@@ -49,7 +49,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${id}`
+        `https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/`
       );
       if (response.status !== 200) {
         throw new Error(`HTTP error! status: ${response.status}`);

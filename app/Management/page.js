@@ -21,7 +21,7 @@ const page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${id}`);
+        const response = await axios.get(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/`);
         setData(response.data);
         setLoading(false);
       } catch (error) {
