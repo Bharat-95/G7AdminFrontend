@@ -88,7 +88,7 @@ const page = () => {
                 <div className="flex justify-between lg:mx-24 md:mx-24 items-center">
                   <div className="flex items-center justify-center">
                     <Image
-                      src={car.Coverimage}
+                      src={car.Coverimage[0]}
                       width={0}
                       height={0}
                       alt="No Image Found"
