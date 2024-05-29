@@ -37,14 +37,12 @@ const Page = () => {
     const confirmed = window.confirm("Are you sure you want to delete this car?");
     if (confirmed) {
       try {
-        await axios.delete(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${id}`);
+        const response = await axios.delete(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${id}`);
         alert("Car deleted successfully");
-        // Fetch the updated data
-        const response = await axios.get("https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars");
-        setData(response.data);
+        const updatedData = data.filter(car => car.G7cars123 !== id);
+        setData(updatedData);
       } catch (error) {
-        console.error("Error deleting car:", error);
-        alert(`Error deleting car: ${error.response ? error.response.data.message : error.message}`);
+        console.error("Error deleting car:", error.response?.data || error.message);
       }
     }
   };
@@ -57,7 +55,8 @@ const Page = () => {
     const date = new Date(year, 0, 1);
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const day = date.getDate().toString().padStart(2, '0');
-    return `${month}/${day}/${date.getFullYear()}`;
+    const formattedDate = `${month}/${day}/${date.getFullYear()}`;
+    return formattedDate;
   };
 
   return (
