@@ -193,7 +193,7 @@ const handleSubmit = async (e) => {
               onChange={(e) =>
                 setFormData({ ...formdata, Name: e.target.value })
               }
-              name="Name"
+              name="CarNo"
               className={inputStyle}
               required
             />
