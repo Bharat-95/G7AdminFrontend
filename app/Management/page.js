@@ -11,7 +11,7 @@ import Image from "next/image";
 import { MdDelete, MdEdit } from "react-icons/md";
 import axios from "axios";
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -39,10 +39,12 @@ const page = () => {
       try {
         await axios.delete(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${id}`);
         alert("Car deleted successfully");
+        // Fetch the updated data
         const response = await axios.get("https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars");
         setData(response.data);
       } catch (error) {
         console.error("Error deleting car:", error);
+        alert(`Error deleting car: ${error.response ? error.response.data.message : error.message}`);
       }
     }
   };
@@ -55,8 +57,7 @@ const page = () => {
     const date = new Date(year, 0, 1);
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const day = date.getDate().toString().padStart(2, '0');
-    const formattedDate = `${month}/${day}/${date.getFullYear()}`;
-    return formattedDate;
+    return `${month}/${day}/${date.getFullYear()}`;
   };
 
   return (
@@ -79,7 +80,7 @@ const page = () => {
           ) : (
             data.map((car) => (
               <div
-                key={car._id}
+                key={car.G7cars123}
                 className="h-80 rounded-xl shadow-lg bg-white text-rose-900"
               >
                 <div className="border p-4 rounded-xl text-xl font-bold">
@@ -116,7 +117,7 @@ const page = () => {
                   </div>
                   <div className="space-y-4">
                     <MdDelete
-                      onClick={() => handleDelete(car._id)}
+                      onClick={() => handleDelete(car.G7cars123)}
                       size={40}
                       className="text-rose-900 cursor-pointer"
                     />
@@ -132,4 +133,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
