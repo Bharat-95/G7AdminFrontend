@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ''
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,6 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="bg-rose-950">
+      <link rel="icon" href="../public/favicon.ico" />
       <body className={inter.className}>{children}</body>
     </html>
   );
