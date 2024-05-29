@@ -38,6 +38,7 @@ const Page = () => {
     if (confirmed) {
       try {
         const response = await axios.delete(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${id}`);
+        console.log(response)
         alert("Car deleted successfully");
         const updatedData = data.filter(car => car.G7cars123 !== id);
         setData(updatedData);
