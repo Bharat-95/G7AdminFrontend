@@ -191,7 +191,7 @@ const handleSubmit = async (e) => {
               type="text"
               value={formdata.CarNo}
               onChange={(e) =>
-                setFormData({ ...formdata, Name: e.target.value })
+                setFormData({ ...formdata, CarNo: e.target.value })
               }
               name="CarNo"
               className={inputStyle}
