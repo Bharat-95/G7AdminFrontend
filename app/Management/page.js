@@ -46,6 +46,7 @@ const Page = () => {
       }
     }
   };
+  
 
   const formatYearAsDate = (year) => {
     const currentYear = new Date().getFullYear();
