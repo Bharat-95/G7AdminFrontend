@@ -34,13 +34,13 @@ const Page = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async (carNo) => {
+  const handleDelete = async (CarNo) => {
     const confirmed = window.confirm("Are you sure you want to delete this car?");
 
-    console.log(carNo)
+    console.log(CarNo)
     if (confirmed) {
       try {
-        const response = await axios.delete(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${carNo}`);
+        const response = await axios.delete(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${CarNo}`);
         console.log(response);
         alert("Car deleted successfully");
         
