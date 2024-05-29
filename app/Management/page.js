@@ -34,20 +34,22 @@ const Page = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (carNo) => {
     const confirmed = window.confirm("Are you sure you want to delete this car?");
     if (confirmed) {
       try {
-        const response = await axios.delete(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${id}`);
-        console.log(response)
+        const response = await axios.delete(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${carNo}`);
+        console.log(response);
         alert("Car deleted successfully");
-        const updatedData = data.filter(car => car.G7cars123 !== id);
+        
+        const updatedData = data.filter(car => car.G7cars123 !== carNo);
         setData(updatedData);
       } catch (error) {
         console.error("Error deleting car:", error.response?.data || error.message);
       }
     }
   };
+  
   
 
   const formatYearAsDate = (year) => {
