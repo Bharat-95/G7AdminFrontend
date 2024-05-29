@@ -10,6 +10,7 @@ const Form = () => {
     OwnerAddress: "",
     MobileNumber: "",
     EmailAddress: "",
+    CarNo:"",
     Year: "",
     Color: "",
     Reading: "",
@@ -97,6 +98,7 @@ const handleSubmit = async (e) => {
       OwnerAddress: "",
       MobileNumber: "",
       EmailAddress: "",
+      CarNo:"",
       Year: "",
       Color: "",
       Reading: "",
@@ -173,6 +175,21 @@ const handleSubmit = async (e) => {
               id="carname"
               type="text"
               value={formdata.Name}
+              onChange={(e) =>
+                setFormData({ ...formdata, Name: e.target.value })
+              }
+              name="Name"
+              className={inputStyle}
+              required
+            />
+          </div>
+
+          <div className="flex flex-col items-start">
+            <label htmlFor="carno">Car Number:</label>
+            <input
+              id="carno"
+              type="text"
+              value={formdata.CarNo}
               onChange={(e) =>
                 setFormData({ ...formdata, Name: e.target.value })
               }
