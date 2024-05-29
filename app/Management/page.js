@@ -92,14 +92,16 @@ const Page = () => {
                 </div>
                 <div className="flex justify-between lg:mx-24 md:mx-24 items-center">
                   <div className="flex items-center justify-center">
-                    <Image
-                      src={car.Coverimage[0]}
-                      width={0}
-                      height={0}
-                      alt="No Image Found"
-                      className="lg:w-64 lg:h-40 md:w-64 md:h-40 w-20 h-20 m-4"
-                      unoptimized
-                    />
+                  {car.Coverimage && car.Coverimage.length > 0 && (
+          <Image
+            src={car.Coverimage[0]}
+            width={0}
+            height={0}
+            alt="No Image Found"
+            className="lg:w-64 lg:h-40 md:w-64 md:h-40 w-20 h-20 m-4"
+            unoptimized
+          />
+        )}
                   </div>
                   <div className="p-6 space-y-6">
                     <div className="flex gap-10 items-center">
