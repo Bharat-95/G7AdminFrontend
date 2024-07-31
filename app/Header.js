@@ -11,6 +11,7 @@ import { FaUser } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { TbReportSearch } from "react-icons/tb";
 import { RxCross2 } from "react-icons/rx";
+import { IoDocumentsSharp } from "react-icons/io5";
 
 
 
@@ -30,15 +31,16 @@ const Header = () => {
         <div className='bg-black w-20 h-[100%]  fixed'>
             {!menuOpen && (
                 <div className='p-4 space-y-40'><IoMenu size={40} className='text-white cursor-pointer lg:block md:block hidden' onClick={handleClick} />
-                <div className='space-y-8'>
-                  <Link href='/Management'><FaCar size={40} className='text-white'/></Link>
-                  <TbReportSearch size={40} className='text-white' />
-                  <FaUser size={40} className='text-white' />
-                  <FaUsers size={40} className='text-white' />
-                  <FaBook size={40} className='text-white' />
+                <ul className='space-y-10'>
+                  <li><Link href='/Management'><FaCar size={40} className='text-white'/></Link></li>
+                  <li><Link href='/Documents'><IoDocumentsSharp size={40} className='text-white'/></Link></li>
+                  <li><Link href='/'><TbReportSearch size={40} className='text-white' /></Link></li>
+                  <li><Link href='/'><FaUser size={40} className='text-white' /></Link></li>
+                  <li><Link href='/'><FaUsers size={40} className='text-white' /></Link></li>
+                  <li><Link href='/'><FaBook size={40} className='text-white' /></Link></li>    
                   
 
-                </div>
+                </ul>
                 </div>
             )}
 
@@ -54,6 +56,7 @@ const Header = () => {
 
                     <ul className='text-white lg:mx-20 space-y-6'>
                         <li className='font-extrabold hover:text-rose-200'><Link href='/Management'>VEHICLE MANAGEMENT</Link></li>
+                        <li className='font-extrabold hover:text-rose-200'><Link href='/Documents'>VERIFY DOCUMENTS</Link></li> 
                         <li className='font-extrabold hover:text-rose-200'><Link href='/'>BOOKING REQUESTS</Link></li>
                         <li className='font-extrabold hover:text-rose-200'><Link href='/'>USERS</Link></li>
                         <li className='font-extrabold hover:text-rose-200'><Link href='/'>EMPLOYEE</Link></li>
