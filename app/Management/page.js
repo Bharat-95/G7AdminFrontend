@@ -23,9 +23,7 @@ const Page = () => {
       try {
         const response = await axios.get(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars`);
 
-        const data = await response.json();
-
-        console.log(data)
+        const data = await response.data;
         
         setData(data);
         setLoading(false);
