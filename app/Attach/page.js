@@ -57,7 +57,7 @@ useEffect(() => {
       }
       setData(response.data);
     } catch (error) {
-      console.error("Unable to fetch data from MongoDB", error);
+      console.error("Unable to fetch data from DynamoDb", error);
     }
   };
   fetchData();
@@ -164,7 +164,7 @@ const handleSubmit = async (e) => {
                 setFormData({ ...formdata, Coverimage: e.target.files[0] })
               }
               name="Coverimage"
-              required
+              
               className="lg:mx-2"
             />
           </div>
@@ -180,7 +180,7 @@ const handleSubmit = async (e) => {
               }
               name="Name"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -195,7 +195,7 @@ const handleSubmit = async (e) => {
               }
               name="CarNo"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -208,7 +208,7 @@ const handleSubmit = async (e) => {
               onChange={handlePriceChange}
               name="Price"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -223,7 +223,7 @@ const handleSubmit = async (e) => {
               }
               name="Color"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -238,7 +238,7 @@ const handleSubmit = async (e) => {
               }
               name="Reading"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -253,7 +253,7 @@ const handleSubmit = async (e) => {
               }
               name="Year"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -268,7 +268,7 @@ const handleSubmit = async (e) => {
               }
               name="AgreementPeriod"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -283,7 +283,7 @@ const handleSubmit = async (e) => {
               }
               name="EngineNo"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -298,7 +298,7 @@ const handleSubmit = async (e) => {
               }
               name="ChassisNumber"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -313,7 +313,7 @@ const handleSubmit = async (e) => {
                 }
                 name="Gear"
                 className={inputStyle}
-                required
+                
               ><option></option>
               <option>Manual</option>
               <option>Automatic</option></select>
@@ -330,7 +330,7 @@ const handleSubmit = async (e) => {
                 }
                 name="Fuel"
                 className={inputStyle}
-                required
+                
               ><option></option>
               <option>Diesel</option>
               <option>Petrol</option></select>
@@ -347,7 +347,7 @@ const handleSubmit = async (e) => {
                 }
                 name="Seating"
                 className={inputStyle}
-                required
+                
               ><option></option>
               <option>5 Seater</option>
               <option>7 Seater</option></select>
@@ -362,7 +362,7 @@ const handleSubmit = async (e) => {
                 setFormData({ ...formdata, RcFront: e.target.files[0] })
               }
               name="RcFront"
-              required
+              
               className="lg:mx-2"
             />
           </div>
@@ -376,7 +376,7 @@ const handleSubmit = async (e) => {
                 setFormData({ ...formdata, RcBack: e.target.files[0] })
               }
               name="RcBack"
-              required
+              
               className="lg:mx-2"
             />
           </div>
@@ -392,7 +392,7 @@ const handleSubmit = async (e) => {
               }
               name="InsuranceName"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -407,7 +407,7 @@ const handleSubmit = async (e) => {
               }
               name="InsuranceNo"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -422,7 +422,7 @@ const handleSubmit = async (e) => {
               }
               name="ExpiryDate"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -437,7 +437,7 @@ const handleSubmit = async (e) => {
               }
               name="OwnerName"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -452,7 +452,7 @@ const handleSubmit = async (e) => {
               }
               name="OwnerAddress"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -467,7 +467,7 @@ const handleSubmit = async (e) => {
               }
               name="MobileNumber"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -496,7 +496,7 @@ const handleSubmit = async (e) => {
               }
               name="EmailAddress"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -509,7 +509,7 @@ const handleSubmit = async (e) => {
                 setFormData({ ...formdata, AdhaarFront: e.target.files[0] })
               }
               name="AdhaarFront"
-              required
+              
               className="lg:mx-2"
             />
           </div>
@@ -523,7 +523,7 @@ const handleSubmit = async (e) => {
                 setFormData({ ...formdata, AdhaarBack: e.target.files[0] })
               }
               name="AdhaarBack"
-              required
+              
               className="lg:mx-2"
             />
           </div>
@@ -541,7 +541,7 @@ const handleSubmit = async (e) => {
               }
               name="BankAccountNo"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -556,7 +556,7 @@ const handleSubmit = async (e) => {
               }
               name="BankName"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -571,7 +571,7 @@ const handleSubmit = async (e) => {
               }
               name="NameonBank"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -586,7 +586,7 @@ const handleSubmit = async (e) => {
               }
               name="IFSC"
               className={inputStyle}
-              required
+              
             />
           </div>
 
@@ -599,7 +599,7 @@ const handleSubmit = async (e) => {
                 setFormData({ ...formdata, AgreementDoc: e.target.files[0] })
               }
               name="AgreementDoc"
-              required
+              
               className="lg:mx-2"
             />
           </div>
@@ -626,7 +626,7 @@ const handleSubmit = async (e) => {
                 setFormData({ ...formdata, Images: e.target.files[0] })
               }
               name="Images"
-              required
+              
               multiple
               className="lg:mx-2"
             />
@@ -641,7 +641,7 @@ const handleSubmit = async (e) => {
                 setFormData({ ...formdata, Insurance: e.target.files[0] })
               }
               name="InsuranceDoc"
-              required
+              
               className="lg:mx-2"
             />
           </div>
