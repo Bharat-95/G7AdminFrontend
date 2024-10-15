@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState, useEffect } from "react";
 import Header from "../Header";
 import { useRouter } from "next/navigation";
@@ -10,11 +10,14 @@ import { SlCalender } from "react-icons/sl";
 import Image from "next/image";
 import { MdDelete, MdEdit } from "react-icons/md";
 import axios from "axios";
+import Modal from "react-modal"; 
 
 const Page = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCar, setSelectedCar] = useState(null); 
 
   const router = useRouter();
 
@@ -22,9 +25,7 @@ const Page = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars`);
-
         const data = await response.data;
-        
         setData(data);
         setLoading(false);
       } catch (error) {
@@ -39,19 +40,46 @@ const Page = () => {
   const handleDelete = async (carNo) => {
     const confirmed = window.confirm("Are you sure you want to delete this car?");
     if (confirmed) {
-        try {
-            const response = await axios.delete(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${carNo}`);
-            console.log(response);
-            alert("Car deleted successfully");
+      try {
+        const response = await axios.delete(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${carNo}`);
+        alert("Car deleted successfully");
 
-            const updatedData = data.filter(car => car.G7cars123 !== carNo);
-            setData(updatedData);
-        } catch (error) {
-            console.error("Error deleting car:", error.response?.data || error.message);
-        }
+        const updatedData = data.filter(car => car.G7cars123 !== carNo);
+        setData(updatedData);
+      } catch (error) {
+        console.error("Error deleting car:", error.response?.data || error.message);
+      }
     }
-};
+  };
+
+  const handleEdit = (car) => {
+    setSelectedCar(car); // Set the selected car for editing
+    setIsModalOpen(true); // Open the modal
+  };
+
+  const handleSave = async () => {
+    if (!selectedCar) return; // Ensure selectedCar is not null
   
+    console.log("Saving carNo:", selectedCar.CarNo); // Log carNo to check its value
+    try {
+      // Exclude the partition key (G7cars123) from the request body
+      const { G7cars123, ...carUpdateData } = selectedCar; // Exclude the key if it's in the object
+      const response = await axios.put(`https://pvmpxgfe77.execute-api.us-east-1.amazonaws.com/cars/${selectedCar.CarNo}`, carUpdateData);
+      console.log("Response:", response); // Log the response for debugging
+      alert("Car updated successfully");
+      
+      const updatedCarData = response.data; // Adjust based on your response structure
+      setData((prevData) => 
+        prevData.map(car => 
+          car.CarNo === selectedCar.CarNo ? updatedCarData : car // Update the specific car in state
+        )
+      );
+      
+      setIsModalOpen(false); // Close the modal after updating
+    } catch (error) {
+      console.error("Error updating car:", error.response?.data || error.message);
+    }
+  };
   
 
   const formatYearAsDate = (year) => {
@@ -94,16 +122,16 @@ const Page = () => {
                 </div>
                 <div className="flex justify-between lg:mx-24 md:mx-24 items-center">
                   <div className="flex items-center justify-center">
-                  {car.Coverimage && car.Coverimage.length > 0 && (
-          <Image
-            src={car.Coverimage[0]}
-            width={0}
-            height={0}
-            alt="No Image Found"
-            className="lg:w-64 lg:h-40 md:w-64 md:h-40 w-20 h-20 m-4"
-            unoptimized
-          />
-        )}
+                    {car.Coverimage && car.Coverimage.length > 0 && (
+                      <Image
+                        src={car.Coverimage[0]}
+                        width={0}
+                        height={0}
+                        alt="No Image Found"
+                        className="lg:w-64 lg:h-40 md:w-64 md:h-40 w-20 h-20 m-4"
+                        unoptimized
+                      />
+                    )}
                   </div>
                   <div className="p-6 space-y-6">
                     <div className="flex gap-10 items-center">
@@ -129,13 +157,77 @@ const Page = () => {
                       size={40}
                       className="text-rose-900 cursor-pointer"
                     />
-                    <MdEdit size={40} className="text-rose-900 cursor-pointer" />
+                    <MdEdit
+                      onClick={() => handleEdit(car)} // Pass the entire car object
+                      size={40}
+                      className="text-rose-900 cursor-pointer"
+                    />
                   </div>
                 </div>
               </div>
             ))
           )}
         </div>
+
+        {/* Modal for editing car details */}
+        {isModalOpen && selectedCar && (
+          <Modal
+            isOpen={isModalOpen}
+            onRequestClose={() => setIsModalOpen(false)}
+            contentLabel="Edit Car"
+            className="modal-class"
+          >
+            <h2>Edit Car Details</h2>
+            <form>
+              <div>
+                <label>Name</label>
+                <input
+                  type="text"
+                  value={selectedCar.Name}
+                  onChange={(e) => setSelectedCar({ ...selectedCar, Name: e.target.value })}
+                />
+              </div>
+              <div>
+                <label>Gear</label>
+                <input
+                  type="text"
+                  value={selectedCar.Gear}
+                  onChange={(e) => setSelectedCar({ ...selectedCar, Gear: e.target.value })}
+                />
+              </div>
+              <div>
+                <label>Fuel</label>
+                <input
+                  type="text"
+                  value={selectedCar.Fuel}
+                  onChange={(e) => setSelectedCar({ ...selectedCar, Fuel: e.target.value })}
+                />
+              </div>
+              <div>
+                <label>Seating</label>
+                <input
+                  type="number"
+                  value={selectedCar.Seating}
+                  onChange={(e) => setSelectedCar({ ...selectedCar, Seating: e.target.value })}
+                />
+              </div>
+              <div>
+                <label>Year</label>
+                <input
+                  type="text"
+                  value={selectedCar.Year}
+                  onChange={(e) => setSelectedCar({ ...selectedCar, Year: e.target.value })}
+                />
+              </div>
+              <button type="button" onClick={handleSave}>
+                Save Changes
+              </button>
+              <button type="button" onClick={() => setIsModalOpen(false)}>
+                Close
+              </button>
+            </form>
+          </Modal>
+        )}
       </div>
     </div>
   );
