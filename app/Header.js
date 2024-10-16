@@ -34,7 +34,7 @@ const Header = () => {
                 <ul className='space-y-10'>
                   <li><Link href='/Management'><FaCar size={40} className='text-white'/></Link></li>
                   <li><Link href='/Documents'><IoDocumentsSharp size={40} className='text-white'/></Link></li>
-                  <li><Link href='/'><TbReportSearch size={40} className='text-white' /></Link></li>
+                  <li><Link href='/Booking'><TbReportSearch size={40} className='text-white' /></Link></li>
                   <li><Link href='/'><FaUser size={40} className='text-white' /></Link></li>
                   <li><Link href='/'><FaUsers size={40} className='text-white' /></Link></li>
                   <li><Link href='/'><FaBook size={40} className='text-white' /></Link></li>    

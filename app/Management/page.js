@@ -751,6 +751,23 @@ const Page = () => {
 
 
               <div className="space-x-4 flex flex-col space-y-2">
+                <label>Availability :</label>
+                <select
+                  type="text"
+                  value={selectedCar.Availability}
+                  onChange={(e) =>
+                    setSelectedCar({ ...selectedCar, Availability: e.target.value })
+                  }
+                  className="text-black p-2 rounded-md text-center w-[100%]"
+                >
+                  <option>{selectedCar.Availability}</option>
+                  <option>Available</option>
+                  <option>Booked</option>
+                </select>
+              </div>
+
+
+              <div className="space-x-4 flex flex-col space-y-2">
                 <label>Comments</label>
                 <input
                   type="text"
