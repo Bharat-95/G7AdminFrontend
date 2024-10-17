@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import {
   ClerkProvider,
+  SignIn,
   SignInButton,
   SignedIn,
   SignedOut,
@@ -17,7 +18,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-<ClerkProvider publishableKey='pk_test_aW1tb3J0YWwtYmxvd2Zpc2gtNDkuY2xlcmsuYWNjb3VudHMuZGV2JA'>
+<ClerkProvider >
       <html lang="en">
         <body>
           <SignedIn>
