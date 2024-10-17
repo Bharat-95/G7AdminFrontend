@@ -1,9 +1,10 @@
 import React from 'react'
-import Login from '../app/Login/page'
+import { SignUp } from "@clerk/nextjs";
+
 const page = () => {
   return (
     <div>
-    <sign-in />
+        <SignUp />
     </div>
   )
 }

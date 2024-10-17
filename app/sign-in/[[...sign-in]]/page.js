@@ -1,9 +1,10 @@
 import React from 'react'
-import Login from '../app/Login/page'
+import { SignIn } from '@clerk/clerk-react';
+
 const page = () => {
   return (
     <div>
-    <sign-in />
+        <SignIn />
     </div>
   )
 }

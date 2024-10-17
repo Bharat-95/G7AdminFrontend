@@ -138,7 +138,7 @@ const Page = () => {
               <div>
                 <button
                   onClick={() =>
-                    updateDocumentStatus(cxdocument.userId, "Verified")
+                    updateDocumentStatus(cxdocument.userId, "verified")
                   }
                   className="bg-rose-950 text-white p-2 rounded-xl"
                 >
@@ -146,7 +146,7 @@ const Page = () => {
                 </button>
                 <button
                   onClick={() =>
-                    updateDocumentStatus(cxdocument.userId, "Rejected")
+                    updateDocumentStatus(cxdocument.userId, "rejected")
                   }
                   className="bg-gray-500 text-white p-2 rounded-xl"
                 >

@@ -35,9 +35,9 @@ const Header = () => {
                   <li><Link href='/Management'><FaCar size={40} className='text-white'/></Link></li>
                   <li><Link href='/Documents'><IoDocumentsSharp size={40} className='text-white'/></Link></li>
                   <li><Link href='/Booking'><TbReportSearch size={40} className='text-white' /></Link></li>
-                  <li><Link href='/'><FaUser size={40} className='text-white' /></Link></li>
-                  <li><Link href='/'><FaUsers size={40} className='text-white' /></Link></li>
-                  <li><Link href='/'><FaBook size={40} className='text-white' /></Link></li>    
+                  <li><Link href='/User'><FaUser size={40} className='text-white' /></Link></li>
+                  <li><Link href='/employee'><FaUsers size={40} className='text-white' /></Link></li>
+                  <li><Link href='/reports'><FaBook size={40} className='text-white' /></Link></li>    
                   
 
                 </ul>

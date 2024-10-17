@@ -1,6 +1,12 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,9 +17,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="bg-rose-950">
-      <link rel="icon" href="../public/favicon.ico" />
-      <body className={inter.className}>{children}</body>
-    </html>
+<ClerkProvider publishableKey='pk_test_aW1tb3J0YWwtYmxvd2Zpc2gtNDkuY2xlcmsuYWNjb3VudHMuZGV2JA'>
+      <html lang="en">
+        <body>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

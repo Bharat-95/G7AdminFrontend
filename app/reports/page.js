@@ -1,9 +1,10 @@
 import React from 'react'
-import Login from '../app/Login/page'
+import Header from '../Header'
+
 const page = () => {
   return (
     <div>
-    <sign-in />
+        <Header />
     </div>
   )
 }
