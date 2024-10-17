@@ -20,7 +20,10 @@ export default function RootLayout({ children }) {
 <ClerkProvider publishableKey='pk_test_aW1tb3J0YWwtYmxvd2Zpc2gtNDkuY2xlcmsuYWNjb3VudHMuZGV2JA'>
       <html lang="en">
         <body>
+          <SignedIn>
           {children}
+          </SignedIn>
+      
         </body>
       </html>
     </ClerkProvider>
