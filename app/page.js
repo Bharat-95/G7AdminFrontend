@@ -1,21 +1,13 @@
-      import React from 'react'
-      import Signin from './sign-in/[[...sign-in]]/page'
-import { SignedIn, SignedOut } from '@clerk/nextjs'
-import Management from '../app/Management/page'
+import React from 'react'
 
+import { SignIn } from '@clerk/nextjs'
+import Header from './Header'
+const page = () => {
+  return (
+    <div className='flex justify-center items-center h-screen'>
+     <Header />
+    </div>
+  )
+}
 
-      const page = () => {
-        return (
-          <div className='flex justify-center items-center h-screen'>
-            <SignedIn>
-              <Management />
-            </SignedIn>
-            <SignedOut>
-            <Signin/>
-            </SignedOut>
-          
-          </div>
-        )
-      }
-
-      export default page
+export default page

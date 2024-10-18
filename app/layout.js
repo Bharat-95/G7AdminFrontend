@@ -3,7 +3,9 @@ import "./globals.css";
 import {
   ClerkProvider,
   SignedIn,
+  SignedOut,
 } from '@clerk/nextjs'
+import { SignIn } from "@clerk/clerk-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +19,12 @@ export default function RootLayout({ children }) {
 <ClerkProvider >
       <html lang="en">
         <body>
-    
+        <SignedIn>
           {children}
+          </SignedIn>
+          <SignedOut>
+            <SignIn/>
+          </SignedOut>
       
         </body>
       </html>
