@@ -15,7 +15,7 @@ const page = () => {
       <div className='flex justify-center items-center text-2xl text-white'>
         Welcome to G7 Admin
       </div>
-      <div>Please click here to <Link href="/sign-in">Login</Link></div>
+      <div className='flex justify-center text-xl'>Please click here to <Link href="/sign-in">Login</Link></div>
      </SignedOut>
     </div>
   )
