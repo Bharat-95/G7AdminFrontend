@@ -4,7 +4,7 @@ import React from 'react'
 const page = () => {
   return (
 
-        <SignIn routing='https://accounts.g7admin.in/sign-in' path="/sign-in" />
+        <SignIn routing='path' path="/sign-in" />
 
   )
 }
