@@ -5,7 +5,7 @@ const page = () => {
   return (
     <div>
         <SignUp 
-         fallbackRedirectUrl="g7-admin-frontend.vercel.app" />
+         fallbackRedirectUrl="https://g7-admin-frontend.vercel.app" />
     </div>
   )
 }
