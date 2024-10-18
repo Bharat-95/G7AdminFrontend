@@ -5,7 +5,7 @@ import {
   SignedIn,
   SignedOut,
 } from '@clerk/nextjs'
-import Signin from '../app/sign-in/[[...sign-in]]/page'
+import Signin from '../app/sign-in/[[...sign-in]]/'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +19,12 @@ export default function RootLayout({ children }) {
 <ClerkProvider >
       <html lang="en">
         <body>
-     
+        <SignedIn>
           {children}
+          </SignedIn>
+        <SignedOut>
+          <Signin />
+        </SignedOut>
       
         </body>
       </html>
