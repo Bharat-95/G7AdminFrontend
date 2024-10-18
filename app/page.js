@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { SignIn } from '@clerk/nextjs'
 import Header from './Header'
 const page = () => {
   return (
