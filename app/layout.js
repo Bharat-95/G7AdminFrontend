@@ -6,7 +6,7 @@ import {
   SignedOut,
   SignIn,
 } from '@clerk/nextjs'
-import Signin from '../app/sign-in/[[...sign-in]]/page'
+
 
 const inter = Inter({ subsets: ["latin"] });
 
