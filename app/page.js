@@ -1,12 +1,13 @@
 import React from 'react'
+import Signin from '../app/sign-in/[[...sign-in]]/page'
 
 import Header from './Header'
-import Link from 'next/link'
 const page = () => {
   return (
     <div className=''>
-      Welcome to G7cars Admin
- <Link href='/sign-in'> Sign In</Link>
+
+      <Signin/>
+
     </div>
   )
 }
