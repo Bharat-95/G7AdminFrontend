@@ -5,6 +5,8 @@ const page = () => {
   return (
     <div>
         <Header />
+
+        <div>Hello this is for Employee</div>
     </div>
   )
 }
