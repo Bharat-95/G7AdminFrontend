@@ -2,7 +2,7 @@ import React from 'react'
 
 import Header from './Header'
 import { SignedIn, SignedOut } from '@clerk/nextjs'
-import Signin from '../app/sign-in/[[...sign-in]]/page'
+import Link from 'next/link'
 
 
 const page = () => {
@@ -12,7 +12,10 @@ const page = () => {
      <Header />
      </SignedIn>
      <SignedOut>
-      <Signin/>
+      <div>
+        Welcome to G7 Admin
+        <div>Please click here to <Link href="/sign-in">Login</Link></div>
+      </div>
      </SignedOut>
     </div>
   )
