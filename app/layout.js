@@ -33,20 +33,19 @@ export default function RootLayout({ children }) {
 function RequireAdmin({ children }) {
   const { user, isLoaded } = useUser();
 
-  // Wait until the user data is loaded
   if (!isLoaded) {
-    return <p>Loading...</p>;  // Optionally show a loading state
+    return <p>Loading...</p>;  
   }
 
   const userRole = user?.publicMetadata?.role;
 
-  console.log(userRole);  // For debugging, can be removed later
+  console.log(userRole);  
 
-  // If the user does not have the admin role, deny access
+
   if (userRole !== "G7owner") {
-    return <p>Access Denied</p>;  // You can also redirect here if needed
+    return <p>Access Denied</p>;  
   }
 
-  // If the user is an admin, render the children components
+
   return <>{children}</>;
 }
