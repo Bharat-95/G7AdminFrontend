@@ -4,6 +4,7 @@ import {
   ClerkProvider,
   SignedIn,
   SignedOut,
+  SignIn,
 } from '@clerk/nextjs'
 import Signin from '../app/sign-in/[[...sign-in]]/page'
 
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
           {children}
           </SignedIn>
         <SignedOut>
-          <Signin />
+          <SignIn />
         </SignedOut>
       
         </body>
