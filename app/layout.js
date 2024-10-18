@@ -22,9 +22,7 @@ export default function RootLayout({ children }) {
         <SignedIn>
           {children}
           </SignedIn>
-          <SignedOut>
-            <SignIn/>
-          </SignedOut>
+        
       
         </body>
       </html>
