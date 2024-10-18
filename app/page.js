@@ -1,4 +1,5 @@
-import { SignIn, useUser } from '@clerk/nextjs'
+import {  useUser } from '@clerk/nextjs'
+import Signin from '../app/sign-in/[[...sign-in]]/page'
 import Header from './Header'
 
 export default function Home() {
