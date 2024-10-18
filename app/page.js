@@ -6,7 +6,7 @@ export default function Home() {
   const { user } = useUser()
 
   if (!user) {
-    return <SignIn />
+    return <Signin />
   }
 
   return <div>
