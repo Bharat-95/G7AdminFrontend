@@ -3,9 +3,7 @@ import "./globals.css";
 import {
   ClerkProvider,
   SignedIn,
-  useUser,
-  RedirectToSignIn,
-} from '@clerk/nextjs';
+} from '@clerk/nextjs'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,36 +14,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+<ClerkProvider >
       <html lang="en">
         <body>
           <SignedIn>
-            <RequireAdmin>
-              {children}
-            </RequireAdmin>
+          {children}
           </SignedIn>
+      
         </body>
       </html>
     </ClerkProvider>
   );
-}
-
-function RequireAdmin({ children }) {
-  const { user, isLoaded } = useUser();
-
-  if (!isLoaded) {
-    return <p>Loading...</p>;  
-  }
-
-  const userRole = user?.publicMetadata?.role;
-
-  console.log(userRole);  
-
-
-  if (userRole !== "G7owner") {
-    return <p>Access Denied</p>;  
-  }
-
-
-  return <>{children}</>;
 }
