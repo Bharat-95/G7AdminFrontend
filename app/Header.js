@@ -63,7 +63,7 @@ const Header = () => {
                     </ul>
 
                     <div className='flex m-20 '>
-                       <SignOutButton> <button className='text-white bg-rose-900 p-4 w-32 h-10 flex justify-center items-center rounded-md shadow-xl hover:bg-opacity-80 font-bold'>Logout</button></SignOutButton>
+                       <SignOutButton className='text-white bg-rose-900 p-4 w-32 h-10 flex justify-center items-center rounded-md shadow-xl hover:bg-opacity-80 font-bold' /> 
                     </div>
                     <RxCross2 size={40} className='text-white absolute top-0 right-0 m-4 cursor-pointer' onClick={handleClick} />
                 </div>
