@@ -12,10 +12,10 @@ const page = () => {
      <Header />
      </SignedIn>
      <SignedOut>
-      <div>
+      <div className='flex justify-center items-center h-screen'>
         Welcome to G7 Admin
-        <div>Please click here to <Link href="/sign-in">Login</Link></div>
       </div>
+      <div>Please click here to <Link href="/sign-in">Login</Link></div>
      </SignedOut>
     </div>
   )
