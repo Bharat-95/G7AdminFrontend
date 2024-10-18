@@ -1,15 +1,13 @@
-import {  useUser } from '@clerk/nextjs'
-import Signin from '../app/sign-in/[[...sign-in]]/page'
+import React from 'react'
+
 import Header from './Header'
-
-export default function Home() {
-  const { user } = useUser()
-
-  if (!user) {
-    return <Signin />
-  }
-
-  return <div>
-    <Header />
-  </div>
+const page = () => {
+  return (
+    <div>
+      <Header />
+     
+    </div>
+  )
 }
+
+export default page
