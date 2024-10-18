@@ -12,6 +12,7 @@ import { FaUsers } from "react-icons/fa";
 import { TbReportSearch } from "react-icons/tb";
 import { RxCross2 } from "react-icons/rx";
 import { IoDocumentsSharp } from "react-icons/io5";
+import { SignOutButton } from '@clerk/nextjs';
 
 
 
@@ -19,9 +20,7 @@ const Header = () => {
     const router = useRouter();
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const handleLogout = () => {
-        router.push('/Login');
-    }
+
 
     const handleClick = () => {
         setMenuOpen(!menuOpen);
@@ -64,7 +63,7 @@ const Header = () => {
                     </ul>
 
                     <div className='flex m-20 '>
-                        <button className='text-white bg-rose-900 p-4 w-32 h-10 flex justify-center items-center rounded-md shadow-xl hover:bg-opacity-80 font-bold' onClick={handleLogout}>Logout</button>
+                       <SignOutButton> <button className='text-white bg-rose-900 p-4 w-32 h-10 flex justify-center items-center rounded-md shadow-xl hover:bg-opacity-80 font-bold'>Logout</button></SignOutButton>
                     </div>
                     <RxCross2 size={40} className='text-white absolute top-0 right-0 m-4 cursor-pointer' onClick={handleClick} />
                 </div>
