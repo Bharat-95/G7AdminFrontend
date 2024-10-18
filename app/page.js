@@ -1,10 +1,12 @@
 import React from 'react'
 
 import Header from './Header'
+import Link from 'next/link'
 const page = () => {
   return (
-    <div className='flex justify-center items-center h-screen'>
-     <Header />
+    <div className=''>
+      Welcome to G7cars Admin
+ <Link href='/sign-in'> Sign In</Link>
     </div>
   )
 }
