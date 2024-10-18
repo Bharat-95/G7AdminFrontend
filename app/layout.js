@@ -7,7 +7,6 @@ import {
   RedirectToSignIn,
 } from '@clerk/nextjs';
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -32,17 +31,22 @@ export default function RootLayout({ children }) {
 }
 
 function RequireAdmin({ children }) {
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
+
+  // Wait until the user data is loaded
+  if (!isLoaded) {
+    return <p>Loading...</p>;  // Optionally show a loading state
+  }
 
   const userRole = user?.publicMetadata?.role;
 
-  console.log(userRole)
+  console.log(userRole);  // For debugging, can be removed later
 
-
+  // If the user does not have the admin role, deny access
   if (userRole !== "G7owner") {
-    return null;
+    return <p>Access Denied</p>;  // You can also redirect here if needed
   }
+
+  // If the user is an admin, render the children components
   return <>{children}</>;
 }
-
-
