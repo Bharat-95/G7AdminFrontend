@@ -33,7 +33,7 @@ const Page = () => {
         </div>
 
         {activeBookings.length === 0 ? (
-          <div className="border bg-white text-sm py-4 px-2 m-20 font-bold rounded-xl space-y-4">
+          <div className="border flex justify-center bg-white text-sm py-4 px-2 m-20 font-bold rounded-xl space-y-4">
             No Active Bookings Found
           </div>
         ) : (
