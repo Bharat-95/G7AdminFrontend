@@ -59,7 +59,7 @@ const Page = () => {
   return (
     <SignedIn className="flex">
       <Header />
-      <div className="w-[100%] lg:m-40 bg-white border-[2px] p-4 border-rose-900 rounded-xl">
+      <div className="w-[100%] bg-white border-[2px] p-4 border-rose-900 rounded-xl">
         <div className="text-rose-900 font-extrabold underline underline-offset-4 flex justify-center">
           VERIFY DOCUMENTS
         </div>
