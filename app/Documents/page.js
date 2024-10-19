@@ -63,9 +63,10 @@ const Page = () => {
         <div className="text-rose-900 font-extrabold underline underline-offset-4 flex justify-center">
           VERIFY DOCUMENTS
         </div>
+
         {data.length === 0 ? (
-          <div className="flex justify-center items-center h-40">
-            <span className="text-gray-500 font-bold">No documents for verification</span>
+          <div className="text-center text-rose-900 font-semibold">
+            No Documents Found to Verify
           </div>
         ) : (
           data.map((cxdocument, index) => (
