@@ -58,7 +58,9 @@ const Page = () => {
 
   return (
     <SignedIn className="flex">
+      <div>
       <Header />
+      </div>
       <div className="lg:m-40">
       <div className="w-[100%] bg-white border-[2px] p-4 border-rose-900 rounded-xl">
         <div className="text-rose-900  font-extrabold underline underline-offset-4 flex justify-center">
@@ -143,7 +145,7 @@ const Page = () => {
                 )}
               </div>
               {cxdocument.status === "pending" && (
-                <div className="flex justify-between">
+                <div className="flex gap-20">
                   <button
                     onClick={() =>
                       updateDocumentStatus(cxdocument.userId, "verified")
