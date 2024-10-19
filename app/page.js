@@ -13,9 +13,10 @@ const page = () => {
        <SignedIn>
      <Header />
      </SignedIn>
-    <div className='flex justify-center my-20 '>
+   
 
      <SignedOut>
+     <div className='flex justify-center my-20 '>
      <div className='space-y-10 border p-20 rounded-xl text-white'>
      <Image
       src={Bg} 
@@ -25,9 +26,10 @@ const page = () => {
       </div>
       <div className='flex justify-center text-xl'><Link href="/sign-in" className='bg-black p-4 rounded-xl'>Login</Link></div>
       </div>
+      </div>
      </SignedOut>
    
-    </div>
+   
     </div>
   )
 }
