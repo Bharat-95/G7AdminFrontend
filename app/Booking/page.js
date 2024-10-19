@@ -28,7 +28,7 @@ const Page = () => {
     <div>
       <Header />
       <div className="flex justify-center py-10 text-xl text-white underline underline-offset-8">Active Bookings</div>
-      {data .length === 0 ? (<div className="border bg-white text-sm py-4 px-2 font-bold rounded-xl space-y-4">
+      {data .length === 0 ? (<div className="border bg-white text-sm py-4 px-2 m-20 font-bold rounded-xl space-y-4">
         No Active Bookings Found
       </div>) : ( data
         .filter((bookings) => bookings.status === "Active")
