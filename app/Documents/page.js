@@ -65,7 +65,7 @@ const Page = () => {
         </div>
 
         {data.length === 0 ? (
-          <div className="text-center m-20 text-rose-900 font-semibold">
+          <div className="text-center m-20 text-rose-900 font-semibold p-10">
             No Documents Found to Verify
           </div>
         ) : (
