@@ -57,7 +57,7 @@ const Page = () => {
   };
 
   return (
-    <SignedIn className="flex">
+    <div className="flex">
       <div>
       <Header />
       </div>
@@ -184,7 +184,7 @@ const Page = () => {
         )}
       </div>
       </div>
-    </SignedIn>
+    </div>
   );
 };
 
