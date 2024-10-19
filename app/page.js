@@ -15,10 +15,10 @@ const page = () => {
      </SignedIn>
     <div className='flex justify-center my-20 '>
  <div className='space-y-10 border p-20 rounded-xl text-white'>
-      <Image
+     <SignedOut>
+     <Image
       src={Bg} 
       className='flex justify-center items-center h-40 w-80'/>
-     <SignedOut>
       <div className='flex justify-center items-center text-2xl text-white'>
         Welcome to G7 Admin
       </div>
