@@ -146,7 +146,7 @@ const Page = () => {
                 )}
               </div>
               {cxdocument.status === "pending" && (
-                <div className="flex gap-20">
+                <div className="flex justify-center gap-20">
                   <button
                     onClick={() =>
                       updateDocumentStatus(cxdocument.userId, "verified")
