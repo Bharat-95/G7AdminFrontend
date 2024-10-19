@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header";
 import axios from "axios";
+import { SignedIn } from "@clerk/clerk-react";
 
 const Page = () => {
   const [data, setData] = useState([]);
@@ -56,106 +57,112 @@ const Page = () => {
   };
 
   return (
-    <div className="flex">
+    <SignedIn className="flex">
       <Header />
       <div className="w-[100%] lg:m-40 bg-white border-[2px] p-4 border-rose-900 rounded-xl">
         <div className="text-rose-900 font-extrabold underline underline-offset-4 flex justify-center">
           VERIFY DOCUMENTS
         </div>
-        {data.map((cxdocument, index) => (
-          <div key={index} className="m-20 space-y-6 border p-10 rounded-lg">
-            <div>Name: {cxdocument.name}</div>
-            <div>Phone Number: {cxdocument.phoneNumber}</div>
-            <div>Status: {cxdocument.status}</div>
-            <h3>Driving License:</h3>
-            <div className="document flex gap-10">
-              {cxdocument.DrivingLicenseFrontUrl && (
-                <div className="border p-4 rounded-xl">
-                  <h4>Front:</h4>
-                  <img
-                    src={`https://g7cars.s3.amazonaws.com/${cxdocument.DrivingLicenseFrontUrl}`}
-                    alt="Driving License Front"
-                    className="w-72 h-40 rounded-xl cursor-pointer"
-                    onClick={() =>
-                      handleImageClick(
-                        `https://g7cars.s3.amazonaws.com/${cxdocument.DrivingLicenseFrontUrl}`
-                      )
-                    }
-                  />
-                </div>
-              )}
-              {cxdocument.DrivingLicenseBackUrl && (
-                <div className="border p-4 rounded-xl">
-                  <h4>Back:</h4>
-                  <img
-                    src={`https://g7cars.s3.amazonaws.com/${cxdocument.DrivingLicenseBackUrl}`}
-                    alt="Driving License Back"
-                    className="w-72 h-40 rounded-xl cursor-pointer"
-                    onClick={() =>
-                      handleImageClick(
-                        `https://g7cars.s3.amazonaws.com/${cxdocument.DrivingLicenseBackUrl}`
-                      )
-                    }
-                  />
-                </div>
-              )}
-            </div>
-
-            <h3>Aadhaar:</h3>
-            <div className="document flex gap-10">
-              {cxdocument.AadhaarFrontUrl && (
-                <div className="border p-4 rounded-xl">
-                  <h4>Front:</h4>
-                  <img
-                    src={`https://g7cars.s3.amazonaws.com/${cxdocument.AadhaarFrontUrl}`}
-                    alt="Aadhaar Front"
-                    className="w-72 h-40 rounded-xl cursor-pointer"
-                    onClick={() =>
-                      handleImageClick(
-                        `https://g7cars.s3.amazonaws.com/${cxdocument.AadhaarFrontUrl}`
-                      )
-                    }
-                  />
-                </div>
-              )}
-              {cxdocument.AadhaarBackUrl && (
-                <div className="border p-4 rounded-xl">
-                  <h4>Back:</h4>
-                  <img
-                    src={`https://g7cars.s3.amazonaws.com/${cxdocument.AadhaarBackUrl}`}
-                    alt="Aadhaar Back"
-                    className="w-72 h-40 rounded-xl cursor-pointer"
-                    onClick={() =>
-                      handleImageClick(
-                        `https://g7cars.s3.amazonaws.com/${cxdocument.AadhaarBackUrl}`
-                      )
-                    }
-                  />
-                </div>
-              )}
-            </div>
-            {cxdocument.status === "pending" && (
-              <div>
-                <button
-                  onClick={() =>
-                    updateDocumentStatus(cxdocument.userId, "verified")
-                  }
-                  className="bg-rose-950 text-white p-2 rounded-xl"
-                >
-                  Verify
-                </button>
-                <button
-                  onClick={() =>
-                    updateDocumentStatus(cxdocument.userId, "rejected")
-                  }
-                  className="bg-gray-500 text-white p-2 rounded-xl"
-                >
-                  Reject
-                </button>
-              </div>
-            )}
+        {data.length === 0 ? (
+          <div className="flex justify-center items-center h-40">
+            <span className="text-gray-500 font-bold">No documents for verification</span>
           </div>
-        ))}
+        ) : (
+          data.map((cxdocument, index) => (
+            <div key={index} className="m-20 space-y-6 border p-10 rounded-lg">
+              <div>Name: {cxdocument.name}</div>
+              <div>Phone Number: {cxdocument.phoneNumber}</div>
+              <div>Status: {cxdocument.status}</div>
+              <h3>Driving License:</h3>
+              <div className="document flex gap-10">
+                {cxdocument.DrivingLicenseFrontUrl && (
+                  <div className="border p-4 rounded-xl">
+                    <h4>Front:</h4>
+                    <img
+                      src={`https://g7cars.s3.amazonaws.com/${cxdocument.DrivingLicenseFrontUrl}`}
+                      alt="Driving License Front"
+                      className="w-72 h-40 rounded-xl cursor-pointer"
+                      onClick={() =>
+                        handleImageClick(
+                          `https://g7cars.s3.amazonaws.com/${cxdocument.DrivingLicenseFrontUrl}`
+                        )
+                      }
+                    />
+                  </div>
+                )}
+                {cxdocument.DrivingLicenseBackUrl && (
+                  <div className="border p-4 rounded-xl">
+                    <h4>Back:</h4>
+                    <img
+                      src={`https://g7cars.s3.amazonaws.com/${cxdocument.DrivingLicenseBackUrl}`}
+                      alt="Driving License Back"
+                      className="w-72 h-40 rounded-xl cursor-pointer"
+                      onClick={() =>
+                        handleImageClick(
+                          `https://g7cars.s3.amazonaws.com/${cxdocument.DrivingLicenseBackUrl}`
+                        )
+                      }
+                    />
+                  </div>
+                )}
+              </div>
+
+              <h3>Aadhaar:</h3>
+              <div className="document flex gap-10">
+                {cxdocument.AadhaarFrontUrl && (
+                  <div className="border p-4 rounded-xl">
+                    <h4>Front:</h4>
+                    <img
+                      src={`https://g7cars.s3.amazonaws.com/${cxdocument.AadhaarFrontUrl}`}
+                      alt="Aadhaar Front"
+                      className="w-72 h-40 rounded-xl cursor-pointer"
+                      onClick={() =>
+                        handleImageClick(
+                          `https://g7cars.s3.amazonaws.com/${cxdocument.AadhaarFrontUrl}`
+                        )
+                      }
+                    />
+                  </div>
+                )}
+                {cxdocument.AadhaarBackUrl && (
+                  <div className="border p-4 rounded-xl">
+                    <h4>Back:</h4>
+                    <img
+                      src={`https://g7cars.s3.amazonaws.com/${cxdocument.AadhaarBackUrl}`}
+                      alt="Aadhaar Back"
+                      className="w-72 h-40 rounded-xl cursor-pointer"
+                      onClick={() =>
+                        handleImageClick(
+                          `https://g7cars.s3.amazonaws.com/${cxdocument.AadhaarBackUrl}`
+                        )
+                      }
+                    />
+                  </div>
+                )}
+              </div>
+              {cxdocument.status === "pending" && (
+                <div>
+                  <button
+                    onClick={() =>
+                      updateDocumentStatus(cxdocument.userId, "verified")
+                    }
+                    className="bg-rose-950 text-white p-2 rounded-xl"
+                  >
+                    Verify
+                  </button>
+                  <button
+                    onClick={() =>
+                      updateDocumentStatus(cxdocument.userId, "rejected")
+                    }
+                    className="bg-gray-500 text-white p-2 rounded-xl"
+                  >
+                    Reject
+                  </button>
+                </div>
+              )}
+            </div>
+          ))
+        )}
 
         {modalOpen && currentImage && (
           <div
@@ -172,7 +179,7 @@ const Page = () => {
           </div>
         )}
       </div>
-    </div>
+    </SignedIn>
   );
 };
 
